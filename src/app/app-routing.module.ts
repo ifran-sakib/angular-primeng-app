@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { authGuard } from './guards/auth.guard';
+import { TodoListComponent } from './components/todo-list/todo-list.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   },
   {
     path: '', redirectTo: 'home', pathMatch: 'full'
+  },
+  {
+    path: 'todo-list',
+    component: TodoListComponent
   }
 ];
 
