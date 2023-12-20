@@ -10,6 +10,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductComponent implements OnInit {
 
   products:Product[]=[];
+  displayAddModel=false;
 
   constructor(private productService:ProductService){
 
@@ -24,6 +25,19 @@ export class ProductComponent implements OnInit {
         this.products=response;
       }
     )
+
+  }
+
+  showAddModal(){
+    this.displayAddModel=true;
+  }
+
+  hideAddModal(isClosed:boolean){
+    this.displayAddModel=!isClosed;
+  }
+
+  saveProductToList(newDate:any){
+    this.products.unshift(newDate);
 
   }
 }

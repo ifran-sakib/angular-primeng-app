@@ -17,6 +17,11 @@ import { TableModule } from 'primeng/table';
 import { CheckboxModule } from 'primeng/checkbox';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { ProductComponent } from './components/product/product.component';
+import { DialogModule } from 'primeng/dialog';
+import { AddEditProductComponent } from './components/product/add-edit-product/add-edit-product.component';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +30,8 @@ import { ProductComponent } from './components/product/product.component';
     RegisterComponent,
     HomeComponent,
     TodoListComponent,
-    ProductComponent
+    ProductComponent,
+    AddEditProductComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,10 @@ import { ProductComponent } from './components/product/product.component';
     BrowserAnimationsModule,
     TableModule,
     CheckboxModule,
-    FormsModule
+    FormsModule,
+    DialogModule,
+    InputNumberModule,
+    InputTextareaModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

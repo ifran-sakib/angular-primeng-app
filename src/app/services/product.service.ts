@@ -13,4 +13,7 @@ export class ProductService {
   getProducts():Observable<Product[]>{
     return this.http.get<Product[]>('https://fakestoreapi.com/products');
   }
+  saveProducts(postDate:any){
+    return this.http.post('https://fakestoreapi.com/products',postDate);
+  }
 }
