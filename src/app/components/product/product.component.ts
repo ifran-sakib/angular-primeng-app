@@ -40,6 +40,7 @@ export class ProductComponent implements OnInit,OnDestroy {
 
   showAddModal(){
     this.displayAddEditModel=true;
+    this.selectedProduct=null;
   }
 
   hideAddModal(isClosed:boolean){
