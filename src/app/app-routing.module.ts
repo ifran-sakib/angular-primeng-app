@@ -5,6 +5,7 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { LoginComponent } from './components/auth/login/login.component';
 import { authGuard } from './guards/auth.guard';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
+import { ProductComponent } from './components/product/product.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'todo-list',
     component: TodoListComponent
+  },
+  {
+    path: 'product',
+    component: ProductComponent
   }
 ];
 

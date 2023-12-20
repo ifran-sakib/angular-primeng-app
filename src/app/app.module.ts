@@ -16,6 +16,7 @@ import { MessageService } from 'primeng/api';
 import { TableModule } from 'primeng/table';
 import { CheckboxModule } from 'primeng/checkbox';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    TodoListComponent
+    TodoListComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
