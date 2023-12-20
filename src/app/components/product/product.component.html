@@ -21,6 +21,12 @@
             <td><img src="{{ product.image }}" width="30px"/></td>
             <td>
                 <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="showEditModal(product)"></button>
+                <button
+          pButton
+          icon="pi pi-trash"
+          class="p-button-rounded p-button-warning"
+          (click)="deleteProduct(product)"
+        ></button>
             </td>
         </tr>
     </ng-template>
@@ -32,4 +38,5 @@
 [selectedProduct]="selectedProduct"
 (clickAddEdit)="saveUpdateProductToList($event)">
 </app-add-edit-product>
+<p-confirmDialog header="Delete"></p-confirmDialog>
 <!-- <p-toast position="bottom-right"></p-toast> -->

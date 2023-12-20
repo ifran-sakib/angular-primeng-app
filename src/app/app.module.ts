@@ -12,7 +12,7 @@ import { ButtonModule } from 'primeng/button';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MessageService } from 'primeng/api';
+import { MessageService,ConfirmationService } from 'primeng/api';
 import { TableModule } from 'primeng/table';
 import { CheckboxModule } from 'primeng/checkbox';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
@@ -21,6 +21,7 @@ import { DialogModule } from 'primeng/dialog';
 import { AddEditProductComponent } from './components/product/add-edit-product/add-edit-product.component';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 @NgModule({
@@ -48,9 +49,10 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     FormsModule,
     DialogModule,
     InputNumberModule,
-    InputTextareaModule
+    InputTextareaModule,
+    ConfirmDialogModule
   ],
-  providers: [MessageService],
+  providers: [MessageService,ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
