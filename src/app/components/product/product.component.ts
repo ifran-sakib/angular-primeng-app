@@ -10,13 +10,14 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductComponent implements OnInit {
 
   products:Product[]=[];
-  displayAddModel=false;
+  displayAddEditModel=false;
+  selectedProduct:any=null;
 
   constructor(private productService:ProductService){
 
   }
   ngOnInit(): void {
-    this.getProductList()
+    this.getProductList();
   }
 
   getProductList(){
@@ -29,15 +30,29 @@ export class ProductComponent implements OnInit {
   }
 
   showAddModal(){
-    this.displayAddModel=true;
+    this.displayAddEditModel=true;
   }
 
   hideAddModal(isClosed:boolean){
-    this.displayAddModel=!isClosed;
+    this.displayAddEditModel=!isClosed;
   }
 
-  saveProductToList(newDate:any){
-    this.products.unshift(newDate);
+  saveUpdateProductToList(newData:any){
+    if(newData.id===this.selectedProduct.id){
+      const productIndex=this.products.findIndex(data=>data.id===newData.id);
+      this.products[productIndex]=newData;
+
+    }else{
+      this.products.unshift(newData);
+    }
+   
+   // this.getProductList();
+
+  }
+
+  showEditModal(product:Product){
+    this.displayAddEditModel=true;
+    this.selectedProduct=product;
 
   }
 }

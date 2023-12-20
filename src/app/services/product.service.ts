@@ -13,7 +13,14 @@ export class ProductService {
   getProducts():Observable<Product[]>{
     return this.http.get<Product[]>('https://fakestoreapi.com/products');
   }
-  saveProducts(postDate:any){
-    return this.http.post('https://fakestoreapi.com/products',postDate);
+  addEditProduct(postData:any,selectedProduct:any){
+    if(!selectedProduct){
+      return this.http.post('https://fakestoreapi.com/products',postData);
+    }else{
+      return this.http.put(`https://fakestoreapi.com/products/${selectedProduct.id}`,postData);
+    }
+    
   }
+
+  
 }

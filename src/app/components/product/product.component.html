@@ -10,6 +10,7 @@
             <th>Price</th>
             <th>Category</th>
             <th>Image</th>
+            <th></th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
@@ -18,9 +19,17 @@
             <td>{{ product.price }}</td>
             <td>{{ product.category }}</td>
             <td><img src="{{ product.image }}" width="30px"/></td>
+            <td>
+                <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="showEditModal(product)"></button>
+            </td>
         </tr>
     </ng-template>
 </p-table>
 
-<app-add-edit-product (clickClose)="hideAddModal($event)" [displayAddModel]="displayAddModel" (clickAdd)="saveProductToList($event)"></app-add-edit-product>
+<app-add-edit-product 
+(clickClose)="hideAddModal($event)" 
+[displayAddEditModel]="displayAddEditModel" 
+[selectedProduct]="selectedProduct"
+(clickAddEdit)="saveUpdateProductToList($event)">
+</app-add-edit-product>
 <!-- <p-toast position="bottom-right"></p-toast> -->
