@@ -23,7 +23,7 @@ export class ProductLazyLoadListComponent implements OnInit {
   loadProduct($event:any){
     console.log($event);
     this.loading=true;
-    this.productService.getProductList($event.first||0).subscribe(
+    this.productService.getItemsFiltered($event.first,$event.rows).subscribe(
       (response:ProductsResponse)=>{
         this.loading=false;
         this.products=response.products;
@@ -31,5 +31,18 @@ export class ProductLazyLoadListComponent implements OnInit {
       }
       )
   }
+
+
+  // loadProduct($event:any){
+  //   console.log($event);
+  //   this.loading=true;
+  //   this.productService.getProductList($event.first||0).subscribe(
+  //     (response:ProductsResponse)=>{
+  //       this.loading=false;
+  //       this.products=response.products;
+  //       this.totalRecord=response.total;
+  //     }
+  //     )
+  // }
 
 }

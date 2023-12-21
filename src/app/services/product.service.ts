@@ -28,6 +28,14 @@ export class ProductService {
   getProductList(skip:number): Observable<ProductsResponse> {
     return this.http.get<ProductsResponse>(`https://dummyjson.com/products?limit=10&skip=${skip}`);
   }
+
+  getItemsFiltered(skip:number,limit:number): Observable<ProductsResponse> {
+    return this.http.get<ProductsResponse>(`http://localhost:5194/api/Items/getItemsFiltered?limit=${limit}&skip=${skip}`);
+  }
+
+  // getItemsFiltered(data: any): Observable<ProductsResponse> {
+  //   return this.http.post<ProductsResponse>(`http://localhost:5194/api/Items/getItemsFiltered`, data);
+  // }
   // getProductList(skip: number): Observable<ProductsResponse> {
   //   return this.http.get<ProductsResponse>(`https://dummyjson.com/products?limit=10&skip=${skip}`);
   // }
