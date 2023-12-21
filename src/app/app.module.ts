@@ -22,6 +22,7 @@ import { AddEditProductComponent } from './components/product/add-edit-product/a
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ProductLazyLoadListComponent } from './components/product-lazy-load-list/product-lazy-load-list.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     HomeComponent,
     TodoListComponent,
     ProductComponent,
-    AddEditProductComponent
+    AddEditProductComponent,
+    ProductLazyLoadListComponent
   ],
   imports: [
     BrowserModule,
