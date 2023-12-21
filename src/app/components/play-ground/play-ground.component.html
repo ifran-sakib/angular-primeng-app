@@ -1,0 +1,25 @@
+<div class="flex flex-column align-items-center justify-content-center">
+    <p-card header="Todo" class="w-6">
+        <div class="m-2 flex">
+            <p-dropdown [options]="productList" [(ngModel)]="selectedPdtDdl" optionLabel="title" optionValue="id" [showClear]="true" placeholder="Select a Product" [filter]="true"></p-dropdown>
+
+            {{selectedPdtDdl| json}}
+            
+        </div>
+        <div class="m-2 flex"> 
+            <p-multiSelect [options]="productList"  [(ngModel)]="selectedPdtMS" optionLabel="title" optionValue="id" placeholder="Select Product" [maxSelectedLabels]="2" [selectedItemsLabel]="'{0} item selected'"></p-multiSelect>
+
+
+            {{selectedPdtMS| json}}
+        </div>
+        <div class="m-2 flex"> 
+            <p-calendar [(ngModel)]="dob" dateFormat="dd/mm/yy"></p-calendar>
+            <p-calendar [(ngModel)]="dob2" dateFormat="dd/mm/yy" (onSelect)="selectDate($event)" dataType="string"></p-calendar>
+            <p-calendar [(ngModel)]="startDateTime" [showTime]="true"></p-calendar>
+        </div>
+    </p-card>
+    
+</div>
+
+
+

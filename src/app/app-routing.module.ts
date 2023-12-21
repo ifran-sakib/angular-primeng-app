@@ -7,6 +7,7 @@ import { authGuard } from './guards/auth.guard';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductLazyLoadListComponent } from './components/product-lazy-load-list/product-lazy-load-list.component';
+import { PlayGroundComponent } from './components/play-ground/play-ground.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'product-list',
     component: ProductLazyLoadListComponent
+  },
+  {
+    path: 'play-ground',
+    component: PlayGroundComponent
   }
 ];
 

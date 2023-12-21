@@ -40,9 +40,9 @@ export class ProductService {
   //   return this.http.get<ProductsResponse>(`https://dummyjson.com/products?limit=10&skip=${skip}`);
   // }
 
-  // getProducts():Observable<Product[]>{
-  //   return this.http.get<Product[]>('https://fakestoreapi.com/products');
-  // }
+  getProductsList():Observable<Product[]>{
+    return this.http.get<Product[]>('https://fakestoreapi.com/products');
+  }
   // addEditProduct(postData:any,selectedProduct:any){
   //   if(!selectedProduct){
   //     return this.http.post('https://fakestoreapi.com/products',postData);

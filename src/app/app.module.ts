@@ -23,6 +23,10 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ProductLazyLoadListComponent } from './components/product-lazy-load-list/product-lazy-load-list.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { PlayGroundComponent } from './components/play-ground/play-ground.component';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { CalendarModule } from 'primeng/calendar';
 
 
 @NgModule({
@@ -34,7 +38,8 @@ import { ProductLazyLoadListComponent } from './components/product-lazy-load-lis
     TodoListComponent,
     ProductComponent,
     AddEditProductComponent,
-    ProductLazyLoadListComponent
+    ProductLazyLoadListComponent,
+    PlayGroundComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,10 @@ import { ProductLazyLoadListComponent } from './components/product-lazy-load-lis
     DialogModule,
     InputNumberModule,
     InputTextareaModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    DropdownModule,
+    MultiSelectModule,
+    CalendarModule 
   ],
   providers: [MessageService,ConfirmationService],
   bootstrap: [AppComponent]
