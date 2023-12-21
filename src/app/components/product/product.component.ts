@@ -45,6 +45,7 @@ export class ProductComponent implements OnInit,OnDestroy {
 
   hideAddModal(isClosed:boolean){
     this.displayAddEditModel=!isClosed;
+    this.getProductList();
   }
 
   saveUpdateProductToList(newData:any){
@@ -56,7 +57,7 @@ export class ProductComponent implements OnInit,OnDestroy {
       this.products.unshift(newData);
     }
 
-
+  
   }
 
   showEditModal(product:Product){
@@ -72,7 +73,7 @@ export class ProductComponent implements OnInit,OnDestroy {
         //Actual logic to perform a confirmation
         this.productService.deleteProduct(product.id).subscribe(
           response => {
-            //this.getProductList();
+            this.getProductList();
             this.products = this.products.filter(data => data.id !== product.id);
             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Deleted Successfully' });
           },
