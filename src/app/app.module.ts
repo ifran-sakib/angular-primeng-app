@@ -27,6 +27,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { PlayGroundComponent } from './components/play-ground/play-ground.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { CalendarModule } from 'primeng/calendar';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { CalendarModule } from 'primeng/calendar';
     ConfirmDialogModule,
     DropdownModule,
     MultiSelectModule,
-    CalendarModule 
+    CalendarModule,
+    AutoCompleteModule  
   ],
   providers: [MessageService,ConfirmationService],
   bootstrap: [AppComponent]

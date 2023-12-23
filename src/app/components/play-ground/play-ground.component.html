@@ -17,6 +17,10 @@
             <p-calendar [(ngModel)]="dob2" dateFormat="dd/mm/yy" (onSelect)="selectDate($event)" dataType="string"></p-calendar>
             <p-calendar [(ngModel)]="startDateTime" [showTime]="true"></p-calendar>
         </div>
+        <div class="m-2 flex"> 
+            <p-autoComplete [(ngModel)]="selectedPdtAu" [suggestions]="productList" field="title" (completeMethod)="searchAu($event)" (onSelect)="selectIdAu($event)"></p-autoComplete> <br/>
+            {{selectedPdtAu| json}}
+        </div>
     </p-card>
     
 </div>
