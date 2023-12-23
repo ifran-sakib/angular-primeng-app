@@ -28,6 +28,7 @@ import { PlayGroundComponent } from './components/play-ground/play-ground.compon
 import { MultiSelectModule } from 'primeng/multiselect';
 import { CalendarModule } from 'primeng/calendar';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     ProductComponent,
     AddEditProductComponent,
     ProductLazyLoadListComponent,
-    PlayGroundComponent
+    PlayGroundComponent,
+    EmployeeListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,10 @@
 <p-table [value]="products" [paginator]="true" [rows]="10"
- [lazy]="true" (onLazyLoad)="loadProduct($event)" [totalRecords]="totalRecord" [loading]="loading">
+ [lazy]="true" (onLazyLoad)="loadProduct($event)" [totalRecords]="totalRecord" [loading]="loading" [rowsPerPageOptions]="[10, 25, 50]">
+ <ng-template pTemplate="caption">
+    <div class="flex align-items-center justify-content-between">
+      <h2>Product List</h2>
+    </div>
+  </ng-template>
     <ng-template pTemplate="header">
         <tr>
             <th>Id</th>
