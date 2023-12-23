@@ -9,6 +9,7 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductLazyLoadListComponent } from './components/product-lazy-load-list/product-lazy-load-list.component';
 import { PlayGroundComponent } from './components/play-ground/play-ground.component';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
+import { OrderMaserComponent } from './components/order-maser/order-maser.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'employee-list',
     component: EmployeeListComponent
+  },
+  {
+    path: 'order-maser',
+    component: OrderMaserComponent
   },
   {
     path: 'play-ground',

@@ -29,6 +29,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { CalendarModule } from 'primeng/calendar';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
+import { OrderMaserComponent } from './components/order-maser/order-maser.component';
+import { AddEditOrderMasterComponent } from './components/order-maser/add-edit-order-master/add-edit-order-master.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
     AddEditProductComponent,
     ProductLazyLoadListComponent,
     PlayGroundComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    OrderMaserComponent,
+    AddEditOrderMasterComponent
   ],
   imports: [
     BrowserModule,
