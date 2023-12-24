@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Ordermaster, OrdersResponse } from 'src/app/interfaces/ordermaster';
 import { OrdermasterService } from 'src/app/services/ordermaster.service';
 
@@ -16,7 +16,7 @@ export class OrderMaserComponent implements OnInit{
   loading:boolean=true;
 
   constructor(private orderService:OrdermasterService,
-    private messageService: MessageService, private router: Router){
+    private messageService: MessageService,  private confirmationService:ConfirmationService, private router: Router){
 
   }
   ngOnInit(): void {
@@ -43,6 +43,30 @@ export class OrderMaserComponent implements OnInit{
   gotoNew() {
     this.router.navigate(['/add-order-maser']);
   }
+
+  // deleteOrder(order:Ordermaster){
+  //   console.log(order);
+
+  // }
+  deleteOrder(id: number) {
+
+    if (confirm("Are you sure to delete?")) {
+      this.orderService.deleteOrder(id)
+        .subscribe({
+          next: (res) => {
+            this.orders = this.orders.filter(data => data.id !== id);
+            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Deleted Successfully' });
+          },
+          error: (error) => {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: error });
+          }
+        })
+    }
+
+
+
+  }
+
   // getOrdersFiltered(){
   //   // console.log($event);
   //   this.loading=true;

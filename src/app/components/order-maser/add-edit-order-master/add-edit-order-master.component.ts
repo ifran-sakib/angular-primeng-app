@@ -15,6 +15,7 @@ export class AddEditOrderMasterComponent implements OnInit {
   customerList:Customer[]=[];
   modalType="Add";
   orderForm=this.fb.group({
+    id:[0],
     code:['',Validators.required],
     customer_id:[0,Validators.required],
     orderdate:['',Validators.required],
@@ -33,6 +34,7 @@ export class AddEditOrderMasterComponent implements OnInit {
     if (id != null) {
      
       console.log(id);
+      this.getOrderById(id);
       this.modalType="Update";
     }else{
       
@@ -40,6 +42,20 @@ export class AddEditOrderMasterComponent implements OnInit {
     this.geCustomerList();
   }
 
+  getOrderById(id: number | string) {
+    this.orderService.getOrderById(id).subscribe((data: any) => {
+      console.log(data);
+      this.orderForm=this.fb.group({
+        id:[data.id],
+        code:[data.code],
+        customer_id:[data.customer_id],
+        orderdate:[data.orderdate],
+        grandtotal:[data.grandtotal],
+        remarks:[data.remarks]
+    
+      })
+    });
+};
 
   geCustomerList(){
     this.orderService.getCustomers().subscribe(
@@ -56,15 +72,41 @@ export class AddEditOrderMasterComponent implements OnInit {
 
   addEditOrder(){
     console.log(this.orderForm.value);
-    this.orderService.addOrder(this.orderForm.value).subscribe(
-      response=>{
-        this.closeModal();
-        const msg=this.modalType==='Add'?'Product Added':'Product Updated';
-        this.msgService.add({ severity: 'success', summary: 'Success', detail: msg });
-      },
-      error=>{
-        this.msgService.add({ severity: 'error', summary: 'error', detail: 'Something went wrong' });
-      }
-    )
+
+    if (this.orderForm.value.id != 0) {
+      this.orderService.updateOrder(this.orderForm.value).subscribe(
+        response=>{
+          this.closeModal();
+          this.msgService.add({ severity: 'success', summary: 'Success', detail: 'Product Updated' });
+        },
+        error=>{
+          this.msgService.add({ severity: 'error', summary: 'error', detail: 'Something went wrong' });
+        }
+      )
+    }
+    else{
+      this.orderService.addOrder(this.orderForm.value).subscribe(
+          response=>{
+            this.closeModal();
+            this.msgService.add({ severity: 'success', summary: 'Success', detail: 'Product Added' });
+          },
+          error=>{
+            this.msgService.add({ severity: 'error', summary: 'error', detail: 'Something went wrong' });
+          }
+        )
+
+    }
+    // this.orderService.addOrder(this.orderForm.value).subscribe(
+    //   response=>{
+    //     this.closeModal();
+    //     const msg=this.modalType==='Add'?'Product Added':'Product Updated';
+    //     this.msgService.add({ severity: 'success', summary: 'Success', detail: msg });
+    //   },
+    //   error=>{
+    //     this.msgService.add({ severity: 'error', summary: 'error', detail: 'Something went wrong' });
+    //   }
+    // )
   }
+
+  
 }
