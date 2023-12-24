@@ -31,6 +31,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { OrderMaserComponent } from './components/order-maser/order-maser.component';
 import { AddEditOrderMasterComponent } from './components/order-maser/add-edit-order-master/add-edit-order-master.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -70,7 +71,7 @@ import { AddEditOrderMasterComponent } from './components/order-maser/add-edit-o
     CalendarModule,
     AutoCompleteModule  
   ],
-  providers: [MessageService,ConfirmationService],
+  providers: [MessageService,ConfirmationService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

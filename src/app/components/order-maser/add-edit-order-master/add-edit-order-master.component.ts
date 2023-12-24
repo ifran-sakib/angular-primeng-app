@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,7 +25,7 @@ export class AddEditOrderMasterComponent implements OnInit {
 
   })
 
-  constructor(private fb:FormBuilder,private orderService:OrdermasterService,private msgService: MessageService,private currentRoute: ActivatedRoute,private router: Router){
+  constructor(private fb:FormBuilder,private orderService:OrdermasterService,private msgService: MessageService,private datepipe:DatePipe,private currentRoute: ActivatedRoute,private router: Router){
 
   }
   ngOnInit(): void {
@@ -49,7 +50,7 @@ export class AddEditOrderMasterComponent implements OnInit {
         id:[data.id],
         code:[data.code],
         customer_id:[data.customer_id],
-        orderdate:[data.orderdate],
+        orderdate:[this.datepipe.transform(data.orderdate, 'yyyy-MM-dd')],
         grandtotal:[data.grandtotal],
         remarks:[data.remarks]
     
