@@ -1,1 +1,28 @@
-<p>order-maser works!</p>
+<p-table [value]="orders" [paginator]="true" [rows]="10"
+ [lazy]="true" (onLazyLoad)="loadProduct($event)" [totalRecords]="totalRecord" [loading]="loading" [rowsPerPageOptions]="[10, 25, 50]">
+ <ng-template pTemplate="caption">
+    <div class="flex align-items-center justify-content-between">
+      <h2>Product List</h2>
+    </div>
+  </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Id</th>
+            <th>Code</th>
+            <th>Order Date</th>
+            <th>Customer Name</th>
+            <th>Total</th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-order>
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.code }}</td>
+            <td> {{order.orderdate | date:'yyyy-MM-dd'}}</td>
+            <td>{{ order.customer_name }}</td>
+            <td>{{ order.grandtotal }}</td>
+            <td><button pButton icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="openForEdit(order.id)"></button></td>
+        </tr>
+    </ng-template>
+</p-table>

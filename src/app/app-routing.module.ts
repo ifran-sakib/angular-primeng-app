@@ -10,6 +10,7 @@ import { ProductLazyLoadListComponent } from './components/product-lazy-load-lis
 import { PlayGroundComponent } from './components/play-ground/play-ground.component';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { OrderMaserComponent } from './components/order-maser/order-maser.component';
+import { AddEditOrderMasterComponent } from './components/order-maser/add-edit-order-master/add-edit-order-master.component';
 
 const routes: Routes = [
   {
@@ -44,9 +45,16 @@ const routes: Routes = [
     path: 'employee-list',
     component: EmployeeListComponent
   },
+  // {
+  //   path: 'order-maser',
+  //   component: OrderMaserComponent
+  // },
+  { path: 'add-order-maser', component: AddEditOrderMasterComponent },
   {
-    path: 'order-maser',
-    component: OrderMaserComponent
+    path: 'order-maser', children: [
+      { path: '', component: OrderMaserComponent },
+      { path: 'edit/:id', component: AddEditOrderMasterComponent }
+    ]
   },
   {
     path: 'play-ground',

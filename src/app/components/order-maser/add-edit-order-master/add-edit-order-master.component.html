@@ -1,1 +1,49 @@
-<p>add-edit-order-master works!</p>
+<div class="flex flex-column align-items-center justify-content-center">
+<p-card styleClass="user-form" class="w-6">
+
+    <form [formGroup]="orderForm" class="order-form">
+        <div class="field">
+            <label for="title" class="block">Title</label>
+            <input type="text" id="title" formControlName="code" pInputText />
+            <small *ngIf="orderForm.controls['code'].invalid && (orderForm.controls['code'].dirty || orderForm.controls['code'].touched)" class="block p-error">
+                Code is required.
+            </small>
+        </div>
+        <div class="field">
+          <label for="title" class="block">Order Date</label>
+          <p-calendar id="orderdate" formControlName="orderdate" dateFormat="dd/mm/yy"></p-calendar>
+          <small *ngIf="orderForm.controls['orderdate'].invalid && (orderForm.controls['orderdate'].dirty || orderForm.controls['orderdate'].touched)" class="block p-error">
+              Date is required.
+          </small>
+      </div>
+      <div class="field">
+        <label for="title" class="block">Customer</label>
+        <p-dropdown [options]="customerList" formControlName="customer_id" optionLabel="name" optionValue="id" [showClear]="true" placeholder="Select a Customer" [filter]="true"></p-dropdown>
+        <small *ngIf="orderForm.controls['customer_id'].invalid && (orderForm.controls['customer_id'].dirty || orderForm.controls['customer_id'].touched)" class="block p-error">
+          Customer is required.
+      </small>
+    </div>
+    <div class="field">
+      <label for="price" class="block">Total</label>
+      <p-inputNumber id="grandtotal" formControlName="grandtotal" class="block"></p-inputNumber>
+      <small *ngIf="orderForm.controls['grandtotal'].invalid && (orderForm.controls['grandtotal'].dirty || orderForm.controls['grandtotal'].touched)" class="block p-error">
+        Total is required.
+      </small>
+  </div>
+  <div class="field">
+    <label for="title" class="block">Remarks</label>
+    <input type="text" id="title" formControlName="remarks" pInputText />
+    <small *ngIf="orderForm.controls['remarks'].invalid && (orderForm.controls['remarks'].dirty || orderForm.controls['remarks'].touched)" class="block p-error">
+        Remarks is required.
+    </small>
+</div>
+    </form>
+
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="addEditOrder()" label="{{modalType}}" [disabled]="orderForm.invalid" ></p-button>
+        <p-button icon="pi pi-check" (click)="closeModal()" label="Cancel" pAutoFocus styleClass="p-button-text"></p-button>
+
+    </ng-template>
+</p-card>
+
+</div>

@@ -19,3 +19,8 @@ export interface ProductsResponse {
     skip: number;
     limit: number;
 }
+
+export interface Customer{
+    id:number;
+    name:string;
+}
