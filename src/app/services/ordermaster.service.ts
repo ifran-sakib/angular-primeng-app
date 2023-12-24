@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { OrdersResponse } from '../interfaces/ordermaster';
 import { Observable } from 'rxjs';
-import { Customer } from '../interfaces/product';
+import { Customer, Product } from '../interfaces/product';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +38,9 @@ export class OrdermasterService {
 
   getCustomers():Observable<Customer[]>{
     return this.http.get<Customer[]>('http://localhost:5194/api/Customers');
+  }
+  
+  getProducts():Observable<Product[]>{
+    return this.http.get<Product[]>('http://localhost:5194/api/Items');
   }
 }

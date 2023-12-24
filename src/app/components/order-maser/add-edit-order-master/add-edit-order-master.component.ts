@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { Customer } from 'src/app/interfaces/product';
+import { Orderdetail } from 'src/app/interfaces/ordermaster';
+import { Customer, Product } from 'src/app/interfaces/product';
 import { OrdermasterService } from 'src/app/services/ordermaster.service';
 
 @Component({
@@ -14,6 +15,8 @@ import { OrdermasterService } from 'src/app/services/ordermaster.service';
 export class AddEditOrderMasterComponent implements OnInit {
 
   customerList:Customer[]=[];
+  itemList:Product[]=[];
+  orderDetails:Orderdetail[]=[];
   modalType="Add";
   orderForm=this.fb.group({
     id:[0],
@@ -21,7 +24,8 @@ export class AddEditOrderMasterComponent implements OnInit {
     customer_id:[0,Validators.required],
     orderdate:['',Validators.required],
     grandtotal:[0,Validators.required],
-    remarks:['',Validators.required]
+    remarks:['',Validators.required],
+    orderDetails:[this.orderDetails]
 
   })
 
@@ -33,35 +37,46 @@ export class AddEditOrderMasterComponent implements OnInit {
 
     let id = this.currentRoute.snapshot.paramMap.get('id');
     if (id != null) {
-     
-      console.log(id);
       this.getOrderById(id);
       this.modalType="Update";
     }else{
       
     }
     this.geCustomerList();
+    this.getItemList();
   }
 
   getOrderById(id: number | string) {
     this.orderService.getOrderById(id).subscribe((data: any) => {
-      console.log(data);
+     
       this.orderForm=this.fb.group({
         id:[data.id],
         code:[data.code],
         customer_id:[data.customer_id],
         orderdate:[this.datepipe.transform(data.orderdate, 'yyyy-MM-dd')],
         grandtotal:[data.grandtotal],
-        remarks:[data.remarks]
+        remarks:[data.remarks],
+        orderDetails:[data.orderDetails],
     
       })
+
+      console.log(this.orderForm.value,this.orderDetails);
     });
+
+   
 };
 
   geCustomerList(){
     this.orderService.getCustomers().subscribe(
       response=>{
         this.customerList=response;
+      })
+  }
+  
+  getItemList(){
+    this.orderService.getProducts().subscribe(
+      response=>{
+        this.itemList=response;
       })
   }
 
@@ -97,16 +112,6 @@ export class AddEditOrderMasterComponent implements OnInit {
         )
 
     }
-    // this.orderService.addOrder(this.orderForm.value).subscribe(
-    //   response=>{
-    //     this.closeModal();
-    //     const msg=this.modalType==='Add'?'Product Added':'Product Updated';
-    //     this.msgService.add({ severity: 'success', summary: 'Success', detail: msg });
-    //   },
-    //   error=>{
-    //     this.msgService.add({ severity: 'error', summary: 'error', detail: 'Something went wrong' });
-    //   }
-    // )
   }
 
   
