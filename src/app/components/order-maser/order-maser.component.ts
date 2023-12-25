@@ -66,19 +66,9 @@ export class OrderMaserComponent implements OnInit{
 
 
   }
+  AddNew(){
+    this.router.navigate(['/add-order-maser']);
+  }
 
-  // getOrdersFiltered(){
-  //   // console.log($event);
-  //   this.loading=true;
-  //   this.orderService.getOrdersFiltered(0,10).subscribe(
-  //     (response:OrdersResponse)=>{
-  //       console.log(response);
-  //       this.loading=false;
-  //       this.orders=response.orders;
-  //       this.totalRecord=response.total;
-        
-  //     }
-  //     )
-  // }
 
 }

@@ -1,7 +1,13 @@
+
 <div class="flex flex-column align-items-center justify-content-center">
-<p-card styleClass="user-form" class="w-6">
+<p-card styleClass="user-form" class="w-9">
 
     <form [formGroup]="orderForm" class="order-form">
+        <div class="flex justify-content-between">
+            <h2>Order master</h2>
+            <p-button icon="pi pi-check" (click)="addEditOrder()" label="{{modalType}}" [disabled]="orderForm.invalid" ></p-button>
+            <p-button icon="pi pi-times" (click)="closeModal()" label="Close" pAutoFocus styleClass="p-button-text"></p-button>
+        </div>
         <div class="field">
             <label for="title" class="block">Title</label>
             <input type="text" id="title" formControlName="code" pInputText />
@@ -39,11 +45,29 @@
 </div>
     </form>
 
-    <ng-template pTemplate="footer">
-        <p-button icon="pi pi-check" (click)="addEditOrder()" label="{{modalType}}" [disabled]="orderForm.invalid" ></p-button>
-        <p-button icon="pi pi-check" (click)="closeModal()" label="Close" pAutoFocus styleClass="p-button-text"></p-button>
-
-    </ng-template>
 </p-card>
-
+<p-card class="w-9"> 
+   <p-button icon="pi pi-plus" (click)="addChild()"></p-button>
+    <p-table [value]="orderDetails" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:10%">Item</th>
+                <th>Qty</th>
+                <th>Rate</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-orderdetail>
+            <tr>
+                <td>
+                    <p-dropdown [options]="itemList" [(ngModel)]="orderdetail.item_id" optionLabel="title" optionValue="id" [showClear]="true" placeholder="Select a Item" [filter]="true"></p-dropdown></td>
+                <td><p-inputNumber id="qty" [(ngModel)]="orderdetail.qty" class="block"></p-inputNumber></td>
+                <td><p-inputNumber id="rate" [(ngModel)]="orderdetail.rate" class="block"></p-inputNumber></td>
+                <td><p-inputNumber id="total" [(ngModel)]="orderdetail.total" class="block"></p-inputNumber></td>
+                <td> <p-button  icon="pi pi-trash" (click)="deleteChild(orderdetail)"></p-button></td>
+            </tr>
+        </ng-template>
+    </p-table>
+</p-card>
 </div>

@@ -17,7 +17,7 @@ export class AddEditOrderMasterComponent implements OnInit {
   customerList:Customer[]=[];
   itemList:Product[]=[];
   orderDetails:Orderdetail[]=[];
-  modalType="Add";
+  modalType="Submit";
   orderForm=this.fb.group({
     id:[0],
     code:['',Validators.required],
@@ -33,14 +33,14 @@ export class AddEditOrderMasterComponent implements OnInit {
 
   }
   ngOnInit(): void {
-   
+
 
     let id = this.currentRoute.snapshot.paramMap.get('id');
     if (id != null) {
       this.getOrderById(id);
       this.modalType="Update";
     }else{
-      
+
     }
     this.geCustomerList();
     this.getItemList();
@@ -48,7 +48,7 @@ export class AddEditOrderMasterComponent implements OnInit {
 
   getOrderById(id: number | string) {
     this.orderService.getOrderById(id).subscribe((data: any) => {
-     
+
       this.orderForm=this.fb.group({
         id:[data.id],
         code:[data.code],
@@ -57,13 +57,15 @@ export class AddEditOrderMasterComponent implements OnInit {
         grandtotal:[data.grandtotal],
         remarks:[data.remarks],
         orderDetails:[data.orderDetails],
-    
-      })
 
-      console.log(this.orderForm.value,this.orderDetails);
+
+
+      })
+      this.orderDetails=data.orderDetails;
+      // console.log(this.orderForm.value,this.orderDetails);
     });
 
-   
+
 };
 
   geCustomerList(){
@@ -72,7 +74,7 @@ export class AddEditOrderMasterComponent implements OnInit {
         this.customerList=response;
       })
   }
-  
+
   getItemList(){
     this.orderService.getProducts().subscribe(
       response=>{
@@ -114,5 +116,23 @@ export class AddEditOrderMasterComponent implements OnInit {
     }
   }
 
-  
+  addChild(){ 
+    this.orderDetails.push({  id: 0,
+      order_id: 0,
+      item_id: 0,
+      qty: 0,
+      rate: 0,
+      total: 0 });
+  }
+  deleteFGSaleDetailRow(Index: any) {
+    if (confirm('Are you sure want to delete?')) {
+      this.orderDetails.splice(Index, 1);
+    }
+  }
+  deleteChild(Index: any): void {
+    if (confirm('Are you sure want to delete?')) {
+      this.orderDetails.splice(Index, 1);
+    }
+  }
+
 }
