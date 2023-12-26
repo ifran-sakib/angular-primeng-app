@@ -32,7 +32,11 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
 import { OrderMaserComponent } from './components/order-maser/order-maser.component';
 import { AddEditOrderMasterComponent } from './components/order-maser/add-edit-order-master/add-edit-order-master.component';
 import { DatePipe } from '@angular/common';
-
+import { TableFilterMenuDemoComponent } from './components/table-filter-menu-demo/table-filter-menu-demo.component';
+import { CustomerService } from './services/customer.service';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { TagModule } from 'primeng/tag';
+import { SliderModule } from 'primeng/slider';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,8 @@ import { DatePipe } from '@angular/common';
     PlayGroundComponent,
     EmployeeListComponent,
     OrderMaserComponent,
-    AddEditOrderMasterComponent
+    AddEditOrderMasterComponent,
+    TableFilterMenuDemoComponent
   ],
   imports: [
     BrowserModule,
@@ -69,9 +74,12 @@ import { DatePipe } from '@angular/common';
     DropdownModule,
     MultiSelectModule,
     CalendarModule,
-    AutoCompleteModule  
+    AutoCompleteModule,
+    ProgressBarModule,
+    TagModule,
+    SliderModule
   ],
-  providers: [MessageService,ConfirmationService,DatePipe],
+  providers: [CustomerService,MessageService,ConfirmationService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

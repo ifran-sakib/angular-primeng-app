@@ -11,6 +11,7 @@ import { PlayGroundComponent } from './components/play-ground/play-ground.compon
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { OrderMaserComponent } from './components/order-maser/order-maser.component';
 import { AddEditOrderMasterComponent } from './components/order-maser/add-edit-order-master/add-edit-order-master.component';
+import { TableFilterMenuDemoComponent } from './components/table-filter-menu-demo/table-filter-menu-demo.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path: 'employee-list',
     component: EmployeeListComponent
+  },
+  {
+    path: 'table-filter-menu-demo',
+    component: TableFilterMenuDemoComponent
   },
   // {
   //   path: 'order-maser',
