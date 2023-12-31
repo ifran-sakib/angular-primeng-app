@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { OrdersResponse } from '../interfaces/ordermaster';
+import { Ordermaster, OrdersResponse } from '../interfaces/ordermaster';
 import { Observable } from 'rxjs';
 import { Customer, Product } from '../interfaces/product';
 
@@ -23,6 +23,10 @@ export class OrdermasterService {
     }
     
   }
+  getOrders():Observable<Ordermaster[]>{
+    return this.http.get<Ordermaster[]>('http://localhost:5194/api/Order');
+  }
+  
   addOrder(postData:any){
     return this.http.post('http://localhost:5194/api/Order',postData);
   }

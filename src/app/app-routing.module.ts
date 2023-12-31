@@ -12,6 +12,7 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
 import { OrderMaserComponent } from './components/order-maser/order-maser.component';
 import { AddEditOrderMasterComponent } from './components/order-maser/add-edit-order-master/add-edit-order-master.component';
 import { TableFilterMenuDemoComponent } from './components/table-filter-menu-demo/table-filter-menu-demo.component';
+import { OrderListFilteredComponent } from './components/order-list-filtered/order-list-filtered.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
   {
     path: 'employee-list',
     component: EmployeeListComponent
+  },
+  {
+    path: 'order-list-filtered',
+    component: OrderListFilteredComponent
   },
   {
     path: 'table-filter-menu-demo',
