@@ -13,6 +13,7 @@ import { OrderMaserComponent } from './components/order-maser/order-maser.compon
 import { AddEditOrderMasterComponent } from './components/order-maser/add-edit-order-master/add-edit-order-master.component';
 import { TableFilterMenuDemoComponent } from './components/table-filter-menu-demo/table-filter-menu-demo.component';
 import { OrderListFilteredComponent } from './components/order-list-filtered/order-list-filtered.component';
+import { EmployeeDialogComponent } from './components/employee-list/employee-dialog/employee-dialog.component';
 
 const routes: Routes = [
   {
@@ -43,9 +44,15 @@ const routes: Routes = [
     path: 'product-list',
     component: ProductLazyLoadListComponent
   },
+  // {
+  //   path: 'employee-list',
+  //   component: EmployeeListComponent
+  // },
   {
-    path: 'employee-list',
-    component: EmployeeListComponent
+    path: 'employee-list', children: [
+      { path: '', component: EmployeeListComponent },
+      { path: 'detail/:id', component: EmployeeDialogComponent }
+    ]
   },
   {
     path: 'order-list-filtered',

@@ -12,9 +12,11 @@
   (sortFunction)="loadEmployees($event)"
 >
   <ng-template pTemplate="caption">
+    <!-- <button (click)="openPopup('https://example.com')">Open Popup</button> -->
+
     <div class="flex align-items-center justify-content-between">
       <h2>Employees</h2>
-      <div>
+      <!-- <div>
         <input
           pInputText
           type="text"
@@ -22,7 +24,7 @@
           placeholder="Search firstName"
           [(ngModel)]="globalFilter"
         />
-      </div>
+      </div> -->
     </div>
   </ng-template>
   <ng-template pTemplate="header">
@@ -38,6 +40,7 @@
       <th>Country</th>
       <th>Join Date</th>
       <th>Status</th>
+      <th>Action</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-employee>
@@ -56,6 +59,7 @@
           [value]="employee.active ? 'Active' : 'Inactive'"
         ></p-tag> -->
       </td>
+      <td><button pButton icon="pi pi-external-link" class="p-button-rounded p-button-success mr-2" (click)="openPopup(employee.id)"></button></td>
     </tr>
   </ng-template>
 </p-table>

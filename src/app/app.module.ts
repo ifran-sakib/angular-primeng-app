@@ -38,6 +38,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { TagModule } from 'primeng/tag';
 import { SliderModule } from 'primeng/slider';
 import { OrderListFilteredComponent } from './components/order-list-filtered/order-list-filtered.component';
+import { EmployeeDialogComponent } from './components/employee-list/employee-dialog/employee-dialog.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { OrderListFilteredComponent } from './components/order-list-filtered/ord
     OrderMaserComponent,
     AddEditOrderMasterComponent,
     TableFilterMenuDemoComponent,
-    OrderListFilteredComponent
+    OrderListFilteredComponent,
+    EmployeeDialogComponent
   ],
   imports: [
     BrowserModule,
